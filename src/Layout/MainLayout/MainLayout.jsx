@@ -6,8 +6,10 @@ import Navbar from "../../components/Navbar/Navbar";
 const MainLayout = () => {
   return (
     <>
+      <div className="max-w-screen-xl container mx-auto">
       <CompanyInfo />
       <Navbar />
+      </div>
       <Outlet/>
       <Footer />
     </>
