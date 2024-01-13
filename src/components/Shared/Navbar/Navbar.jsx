@@ -1,4 +1,4 @@
-import Logo from "../../assets/images/logo/logo.png";
+import Logo from "../../../assets/images/logo/logo.png";
 import { Link } from "react-router-dom";
 import { BsFillPersonFill } from "react-icons/bs";
 const Navbar = () => {
