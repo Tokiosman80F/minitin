@@ -8,7 +8,7 @@ import {
 
 const CompanyInfo = () => {
   return (
-    <div className="flex justify-between my-5">
+    <div className="flex justify-between my-5 border-b-2 pb-2">
       <div className="flex items-center gap-10">
         <CompanyInfoItem
           icon={<BsFillTelephoneFill className="text-blue-500 " />}

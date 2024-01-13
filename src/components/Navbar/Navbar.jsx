@@ -1,11 +1,11 @@
-import Logo from "../../assets/images/logo/logo - Copy.png";
+import Logo from "../../assets/images/logo/logo.png";
 import { Link } from "react-router-dom";
 import { BsFillPersonFill } from "react-icons/bs";
 const Navbar = () => {
   return (
-    <div className="flex justify-between items-center my-10  border-b-2 pb-2">
+    <div className="flex justify-between items-center my-5  ">
       <div className="flex items-center ">
-        <img src={Logo} alt="MiniTin Logo" />
+        <img src={Logo} alt="MiniTin Logo" className="w-16 h-16"/>
         <div className="text-center text-3xl font-bold">MiniTin</div>
       </div>
       {/* nav link */}

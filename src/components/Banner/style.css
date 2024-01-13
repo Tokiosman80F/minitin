@@ -1,0 +1,15 @@
+.slick-dots {
+    
+    bottom: 10px;
+}
+.slick-dots li{
+    font-size: 30px;
+    color: gray;
+}
+.slick-dots li.slick-active {
+    color: #1667da;
+    z-index: 10;
+}
+.slick-arrow.slick-next::before {
+    content: "";
+}
