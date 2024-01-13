@@ -1,4 +1,4 @@
-const Title = () => {
+const Title = ({subtitle,title}) => {
   return (
     <div className="  my-10">
       <div className="flex justify-center relative ">
@@ -8,9 +8,9 @@ const Title = () => {
       </div>
       <div className="text-center py-5">
         <p className="text-base text-gray-400 font-bold">
-          Hot items. Affordable prices.
+          {subtitle}
         </p>
-        <h1 className="text-5xl font-bold mt-3">Shop By Age</h1>
+        <h1 className="text-4xl font-bold mt-3">{title}</h1>
       </div>
     </div>
   );
