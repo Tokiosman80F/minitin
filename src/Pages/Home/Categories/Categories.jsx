@@ -18,7 +18,7 @@ const Categories = () => {
       <div className="flex items-center justify-around">
         {categoriesImg.map((category, index) => (
           <div key={index} >
-            <div className={`relative w-32 h-32 ${category.bgColor } `}>
+            <div className={`relative w-32 h-32 ${category.bgColor } rounded-full `}>
               <img
                 src={category.img}
                 alt=""
