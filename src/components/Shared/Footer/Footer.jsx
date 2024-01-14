@@ -1,11 +1,16 @@
-import React from 'react';
+
+import FooterInfo from "./FooterInfo";
+import FooterContact from "./FooterContact";
+import Copyright from "./Copyright";
 
 const Footer = () => {
-    return (
-        <div>
-            this is footer
-        </div>
-    );
+  return (
+    <div>
+      <FooterInfo></FooterInfo>
+      <FooterContact></FooterContact>
+      <Copyright></Copyright>
+    </div>
+  );
 };
 
 export default Footer;

@@ -12,6 +12,7 @@ const Home = () => {
         <Categories></Categories>
         <Title title="Hot Deal Limited Offer"></Title>
         <HotDeal></HotDeal>
+        <Title title="Our Recent Products"></Title>
       </div>
     </>
   );
