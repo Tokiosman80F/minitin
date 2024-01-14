@@ -2,8 +2,8 @@ import React from "react";
 import payment from "../../../assets/images/footer/payment.png"
 const Copyright = () => {
   return (
-    <div>
-      <footer className="footer items-center p-4  bg-black text-white">
+    <div className="bg-black">
+      <footer className="footer items-center p-4   text-white max-w-screen-xl container mx-auto">
         <aside className="items-center grid-flow-col">
           <p>©2024 MiniTeen - All rights Reserved</p>
         </aside>
