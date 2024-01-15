@@ -11,11 +11,11 @@ const Search = ({setSearchText,handleSearch}) => {
   };
   return (
     <form
-      className="max-w-screen-xl container mx-auto flex "
+      className=" flex my-5 justify-center "
       onSubmit={handleSearch}
     >
       {/* input box */}
-      <div className="relative w-full">
+      <div className="relative w-1/2">
         <div className="absolute inset-y-0  flex items-center ps-3 pointer-events-none">
           <IoSearch className="text-2xl" />
         </div>
