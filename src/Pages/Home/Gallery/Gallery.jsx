@@ -33,8 +33,6 @@ const Gallery = ({ size }) => {
       </div>
 
       <div />
-
-     
     </div>
   );
 };

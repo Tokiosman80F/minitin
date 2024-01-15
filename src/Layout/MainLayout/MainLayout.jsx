@@ -7,11 +7,13 @@ const MainLayout = () => {
   return (
     <>
       <div className="max-w-screen-xl container mx-auto">
-      <CompanyInfo />
-      <Navbar />
+        <CompanyInfo />
+        <Navbar />
       </div>
-      <Outlet/>
-      {/* <Footer /> */}
+      <div className="min-h-[85vh]">
+        <Outlet />
+      </div>
+      <Footer />
     </>
   );
 };
