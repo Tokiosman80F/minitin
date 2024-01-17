@@ -8,10 +8,13 @@ const AllToys = () => {
   const [toysData, setToysData] = useState([]);
 
   const [openModal, setOpenModal] = useState(false);
+  const [selectedToy,setSelectedToy]=useState(null)
 
-  const toggleModal = () => {
+  const toggleModal = (toy) => {
     setOpenModal(!openModal);
     console.log(openModal);
+    console.log(toy);
+    setSelectedToy(toy)
   };
 
   const handleSearch = (event) => {
@@ -57,18 +60,18 @@ const AllToys = () => {
               >
                 <th>{index + 1}</th>
                 <td className=" font-medium">{toy.toyName}</td>
-                <td className="capitalize">{toy.subCategory}</td>
+                <td className="capitalize text-center">{toy.subCategory}</td>
                 <td>{toy.seller}</td>
-                <td>${toy.price}</td>
-                <td>{toy.availableQuantity}</td>
+                <td className="text-center">${toy.price}</td>
+                <td className="text-center">{toy.availableQuantity}</td>
                 <td>
                   <button
-                    onClick={()=>document.getElementById('my_modal_1').showModal()}
+                    onClick={()=>toggleModal(toy)}
                     className="rounded py-3 px-5 bg-blue-500 hover:bg-blue-400 text-white font-semibold"
                   >
                     View Detail <FaEye className="inline" />
                   </button>
-                  { <Modal></Modal>} 
+                   {openModal && selectedToy && <Modal toy={selectedToy} onClose={()=>setOpenModal(!openModal)}></Modal>}
                 </td>
               </tr>
             </tbody>
