@@ -3,6 +3,7 @@ import MainLayout from "../../Layout/MainLayout/MainLayout";
 import Home from "../../Pages/Home/Home";
 import AllToys from "../../Pages/AllToys/AllToys";
 import SignInForm from "../../Pages/SignInForm/SignInForm";
+import SignUpForm from "../../Pages/SignUpForm/SignUpForm";
 
 export const router=createBrowserRouter([
     {
@@ -20,7 +21,11 @@ export const router=createBrowserRouter([
             {
                 path:'/signin',
                 element:<SignInForm></SignInForm>
-            }
+            },
+            {
+                path:'/signup',
+                element:<SignUpForm></SignUpForm>
+            },
         ]
     }
 ])

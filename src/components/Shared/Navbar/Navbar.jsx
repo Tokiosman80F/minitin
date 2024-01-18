@@ -22,6 +22,9 @@ const Navbar = () => {
         <Link to="/signin" className="flex items-center gap-1 font-bold text-blue-500">
           <BsFillPersonFill /> Login
         </Link>
+        <Link to="/signup" className="flex items-center gap-1 font-bold text-blue-500">
+          <BsFillPersonFill /> signUp
+        </Link>
       </div>
     </div>
   );

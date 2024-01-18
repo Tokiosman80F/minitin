@@ -2,8 +2,18 @@ import { FcGoogle } from "react-icons/fc";
 import { MdOutlineMail } from "react-icons/md";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 const SignInForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+
+  const handleSignup=(event)=>{
+    event.preventDefault()
+    let form =event.target
+    let email=form.useremail.value
+    let password=form.password.value;
+    const userInfo={email,password}
+    console.log(userInfo);
+  }
 
   return (
     <div>
@@ -17,8 +27,10 @@ const SignInForm = () => {
               </p>
             </div>
           </div>
+          {/* ---form  div----*/}
           <div className="bg-white  border-2  my-4 rounded-xl sm:px-6 px-4 py-8 max-w-md w-full h-max  max-lg:mx-auto">
-            <form>
+
+            <form onSubmit={handleSignup}>
               <div className="mb-10">
                 <h3 className="text-3xl font-extrabold">Sign in</h3>
               </div>
@@ -37,8 +49,8 @@ const SignInForm = () => {
                 </label>
                 <div className="relative flex items-center">
                   <input
-                    name="username"
-                    type="text"
+                    name="useremail"
+                    type="email"
                     required
                     className="w-full text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600"
                     placeholder="Enter user email"
@@ -75,7 +87,7 @@ const SignInForm = () => {
               </div>
               <div className="mt-10">
                 <button
-                  type="button"
+                  type="submit"
                   className="w-full shadow-xl py-2.5 px-4 text-sm font-semibold rounded text-white bg-blue-600 hover:bg-blue-700 focus:outline-none"
                 >
                   Log in
@@ -83,11 +95,11 @@ const SignInForm = () => {
               </div>
               <p className="text-sm mt-6 text-center">
                 Don't have an account
-                <a
+                <Link to="/signup"
                   className="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap"
                 >
                   Register here
-                </a>
+                </Link>
               </p>
             </form>
           </div>
