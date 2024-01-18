@@ -19,10 +19,9 @@ const Navbar = () => {
       </div>
       {/* user & login */}
       <div>
-        <div></div>
-        <div className="flex items-center gap-1 font-bold text-blue-500">
+        <Link to="/signin" className="flex items-center gap-1 font-bold text-blue-500">
           <BsFillPersonFill /> Login
-        </div>
+        </Link>
       </div>
     </div>
   );
