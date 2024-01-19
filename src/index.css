@@ -10,3 +10,9 @@ body {
   margin: 0;
   padding: 0;
 }
+.stoke{ 
+  font-family: sans-serif;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1.5px white;
+}
