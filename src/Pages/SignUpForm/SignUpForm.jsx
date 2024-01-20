@@ -5,6 +5,8 @@ import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from 'sweetalert2'
+
 const SignUpForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const {signUpUser} = useContext(AuthContext);
@@ -14,11 +16,20 @@ const SignUpForm = () => {
     let form = event.target;
     let email = form.useremail.value;
     let password = form.password.value;
-    // const userInfo = { email, password };
-    // console.log(userInfo);
     signUpUser(email, password)
       .then((userCredential) => {
+        console.log("Sign-in successfull");
         const user = userCredential.user;
+        if(user.accessToken){
+          console.log("into user");
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Sign-Up Successful ",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
         console.log(user);
       })
       .catch((error) => {
