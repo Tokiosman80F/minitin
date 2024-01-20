@@ -11,8 +11,19 @@ body {
   padding: 0;
 }
 .stoke{ 
+  font-size: 60px;
+  font-weight: 700; 
   font-family: sans-serif;
   text-transform: uppercase;
   color: transparent;
   -webkit-text-stroke: 1.5px white;
+}
+.addProduct-input{
+  @apply w-full text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600
+}
+.addProduct-label{
+  @apply text-base font-bold mb-2 block
+}
+.max-width-container{
+  @apply max-w-screen-xl container mx-auto
 }

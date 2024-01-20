@@ -3,31 +3,42 @@ import { MdOutlineMail } from "react-icons/md";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 const SignUpForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const {signUpUser} = useContext(AuthContext);
 
   const handleSignup = (event) => {
     event.preventDefault();
     let form = event.target;
     let email = form.useremail.value;
     let password = form.password.value;
-    const userInfo = { email, password };
-    console.log(userInfo);
+    // const userInfo = { email, password };
+    // console.log(userInfo);
+    signUpUser(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
   };
   return (
     <div>
       <div>
         <div className="bg-gradient-to-r from-blue-500 to-blue-700 sm:p-8 p-4 h-[320px]">
-          <div className="max-w-screen-xl container mx-auto grid lg:grid-cols-2 gap-4  ">
+          <div className="max-width-container grid lg:grid-cols-2 gap-4  ">
             <div>
               <div className="max-w-lg mt-16 px-6 max-lg:hidden ">
-                <h3 className="text-3xl font-bold text-white">Register </h3>
+                <h3 className="stoke">Register </h3>
                 <p className="text-sm mt-4 text-white">
-                  Using 
+                  Using
                   <span className="text-yellow-300 font-bold px-1">
                     Firebase Authentication
                   </span>
-                  
                   which allows users to signin to our app using more than one
                   signin method,including email address and password sign-in and
                   google sign-in
@@ -41,9 +52,9 @@ const SignUpForm = () => {
                   <h3 className="text-3xl font-extrabold">Sign in</h3>
                 </div>
 
-                <div >
+                <div>
                   <label className="text-base font-bold mb-2 block  ">
-                     Name
+                    Name
                   </label>
                   <div className="relative flex items-center">
                     <input
@@ -53,13 +64,13 @@ const SignUpForm = () => {
                       className="w-full text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600"
                       placeholder="Enter user name"
                     />
-                    <FaUser  className="absolute right-4 text-gray-400" />
+                    <FaUser className="absolute right-4 text-gray-400" />
                   </div>
                 </div>
 
                 <div className="mt-4">
                   <label className="text-base font-bold mb-2 block  ">
-                     Email
+                    Email
                   </label>
                   <div className="relative flex items-center">
                     <input
@@ -92,7 +103,7 @@ const SignUpForm = () => {
                     </div>
                   </div>
                 </div>
-              
+
                 <div className="mt-10">
                   <button
                     type="submit"
@@ -103,7 +114,10 @@ const SignUpForm = () => {
                 </div>
                 <p className="text-sm mt-6 text-center">
                   Already have an account
-                  <Link to="/signin" className="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap">
+                  <Link
+                    to="/signin"
+                    className="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap"
+                  >
                     Login here
                   </Link>
                 </p>

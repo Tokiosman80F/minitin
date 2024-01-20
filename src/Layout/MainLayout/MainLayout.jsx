@@ -6,7 +6,7 @@ import Footer from "../../components/Shared/Footer/Footer";
 const MainLayout = () => {
   return (
     <>
-      <div className="max-w-screen-xl container mx-auto">
+      <div className="max-width-container">
         <CompanyInfo />
         <Navbar />
       </div>

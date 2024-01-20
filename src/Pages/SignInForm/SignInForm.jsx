@@ -18,10 +18,10 @@ const SignInForm = () => {
   return (
     <div>
       <div className="bg-gradient-to-r from-blue-500 to-blue-700 sm:p-8 p-4 h-[320px]">
-        <div className="max-w-screen-xl container mx-auto grid lg:grid-cols-2 gap-4  ">
+        <div className="max-width-container grid lg:grid-cols-2 gap-4  ">
           <div >
             <div className="max-w-lg mt-16 px-6 max-lg:hidden ">
-              <h3 className="text-3xl font-bold text-white">Sign in </h3>
+              <h3 className=" stoke">Sign in </h3>
               <p className="text-sm mt-4 text-white">
                 Using <span className="text-yellow-300 font-bold"> Firebase Authentication</span> which allows users to signin to our app using more than one signin method,including email address and password sign-in and google sign-in
               </p>

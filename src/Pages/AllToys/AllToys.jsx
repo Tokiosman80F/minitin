@@ -33,7 +33,7 @@ const AllToys = () => {
   }, []);
 
   return (
-    <div className="max-w-screen-xl container mx-auto ">
+    <div className="max-width-container ">
       <Search
         setSearchText={setSearchText}
         handleSearch={handleSearch}

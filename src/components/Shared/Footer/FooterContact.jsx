@@ -6,7 +6,7 @@ import { FaLinkedin } from "react-icons/fa6";
 const FooterContact = () => {
   return (
     <div className="bg-[#0062BD] py-10">
-      <div className=" max-w-screen-xl container mx-auto">
+      <div className=" max-width-container">
         <div className="footer justify-between items-center">
           <div className="join gap-5">
             <input
