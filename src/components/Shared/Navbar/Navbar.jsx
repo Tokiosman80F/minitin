@@ -36,20 +36,29 @@ const Navbar = () => {
         <Link to="/all-toys">All Toy</Link>
         <Link to="">My Toys</Link>
         <Link to="/addproduct">Add Toy</Link>
-        <Link to="">Blogs</Link>
+        <Link to="/blogs">Blogs</Link>
         <Link to=""></Link>
       </div>
       {/* user & login */}
-      <div>
-        <div>{user?.email}</div>
+      <div className="flex justify-between items-center gap-2">
         <div>
           {user?.email ? (
-            <Link
-              onClick={handleSignOutUser}
-              className="flex items-center gap-1 font-bold text-blue-500"
-            >
-              <PiSignOutBold /> Sign-Out
-            </Link>
+            <div className="flex gap-5">
+              {/* image */}
+              <div
+                className="w-10 h-10 border border-blue-500 bg-yellow-300  rounded-full lg:tooltip  lg:tooltip-left  "
+                data-tip={user?.displayName}
+              >
+                <img src={user?.photoURL} alt="hi" />
+              </div>
+              {/* link */}
+              <Link
+                onClick={handleSignOutUser}
+                className="flex items-center gap-1 font-bold text-blue-500"
+              >
+                <PiSignOutBold /> Sign-Out
+              </Link>
+            </div>
           ) : (
             <Link
               to="/signin"

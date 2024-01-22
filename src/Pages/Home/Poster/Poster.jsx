@@ -1,7 +1,7 @@
 import bannerImg from "../../../assets/images/banner/starwar_banner-1.jpeg";
 const Poster = () => {
   return (
-    <div className="relative">
+    <div className="relative my-32">
       <img src={bannerImg} alt="" className="w-full h-full object-cover " />
       <div className="absolute bg-black/20 top-0 w-full h-full  text-white  p-20 ">
         <h1 className="text-4xl font-bold w-1/3 ">Top toys available online and in-store</h1>

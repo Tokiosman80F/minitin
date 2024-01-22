@@ -1,20 +1,52 @@
+import { useContext } from "react";
 import minecraft from "../../assets/images/form/addProduct.png";
+import { AuthContext } from "../../Provider/AuthProvider";
 const AddProduct = () => {
-  const onhandleAddtoy=(event)=>{
-    event.preventDefault()
-    let form=event.target
-    let price=form.price.value 
-    let toyName=form.toyName.value
-    let subCategory= form.subCategory.value
-    // let sellerEmail= form..value
-    // let sellerName= form..value
-    let imageUrl =form.imageUrl.value
+  const { user } = useContext(AuthContext);
+  // console.log("user from add product",user.displayName);
+  const onhandleAddtoy = (event) => {
+    event.preventDefault();
+    let form = event.target;
+    let price = form.price.value;
+    let toyName = form.toyName.value;
+    let subCategory = form.subCategory.value;
+    let sellerEmail = user.email;
+    let seller = user.displayName;
+    let imageUrl = form.imageUrl.value;
+    let rating = form.rating.value;
+    let availableQuantity = form.quantity.value;
+    let description = form.description.value;
+    const newToyDetail = {
+      price,
+      toyName,
+      subCategory,
+      sellerEmail,
+      seller,
+      imageUrl,
+      rating,
+      availableQuantity,
+      description,
+    };
+    console.log(newToyDetail);
 
-  }
+    fetch("http://localhost:8000/add-toy", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newToyDetail),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result) 
+        form.reset()
+      })
+      .catch((error) => console.error("the error message",error));
+  };
   return (
     <div>
       <div>
-        <div className="relative" >
+        <div className="relative">
           <div className="bg-gradient-to-r from-blue-500 to-blue-700 sm:p-8 p-4 h-[320px] absolute w-full z-[-1]"></div>
           <div className="max-width-container grid lg:grid-cols-2 gap-4  ">
             <div className="">
@@ -35,9 +67,7 @@ const AddProduct = () => {
                 <div className="flex justify-between gap-2">
                   {/* toyname */}
                   <div className="w-full">
-                    <label className="addProduct-label  ">
-                      Toy Name
-                    </label>
+                    <label className="addProduct-label  ">Toy Name</label>
                     <div>
                       <input
                         name="toyName"
@@ -50,9 +80,7 @@ const AddProduct = () => {
                   </div>
                   {/* price */}
                   <div className="w-full">
-                    <label className="addProduct-label  ">
-                      Price
-                    </label>
+                    <label className="addProduct-label  ">Price</label>
                     <div>
                       <input
                         name="price"
@@ -68,31 +96,25 @@ const AddProduct = () => {
                 <div className="flex justify-between gap-2">
                   {/* user */}
                   <div className="mt-4 w-full">
-                    <label className="addProduct-label  ">
-                      seller name
-                    </label>
-                    <div className="relative flex items-center">
+                    <label className="addProduct-label  ">Seller Name</label>
+                    <div className="">
                       <input
-                        name="sellerName"
-                        type="text"
-                        required
+                        disabled
+                        defaultValue={user?.displayName}
                         className="addProduct-input"
-                        placeholder="Enter user email"
                       />
                     </div>
                   </div>
                   {/* email */}
                   <div className="mt-4 w-full">
-                    <label className="addProduct-label  ">
-                      Seller Email
-                    </label>
-                    <div className="relative flex items-center">
+                    <label className="addProduct-label  ">Seller Email</label>
+                    <div className="">
                       <input
                         name="sellerEmail"
                         type="email"
-                        required
-                        className="addProduct-input"
-                        placeholder="Enter user email"
+                        disabled
+                        defaultValue={user?.email}
+                        className="addProduct-input "
                       />
                     </div>
                   </div>
@@ -101,46 +123,40 @@ const AddProduct = () => {
                 <div className="flex justify-between">
                   {/* rating */}
                   <div className="mt-4">
-                    <label className="addProduct-label  ">
-                      Rating
-                    </label>
-                    <div className="relative flex items-center">
+                    <label className="addProduct-label  ">Rating</label>
+                    <div className="">
                       <input
                         name="rating"
                         type="number"
                         required
                         className="addProduct-input"
-                        placeholder="Enter user email"
+                        placeholder="Enter toy quality rating"
                       />
                     </div>
                   </div>
                   {/* quantity */}
                   <div className="mt-4">
-                    <label className="addProduct-label  ">
-                      Quantity
-                    </label>
+                    <label className="addProduct-label  ">Quantity</label>
                     <div className="relative flex items-center">
                       <input
                         name="quantity"
                         type="number"
                         required
                         className="addProduct-input"
-                        placeholder="Enter user email"
+                        placeholder="Enter Quantity Number"
                       />
                     </div>
                   </div>
                   {/* sub */}
                   <div className="mt-4">
-                    <label className="addProduct-label  ">
-                      Sub-Category
-                    </label>
-                    <div className="relative flex items-center">
+                    <label className="addProduct-label  ">Sub-Category</label>
+                    <div className="">
                       <input
                         name="subCategory"
-                        type=""
+                        type="text"
                         required
                         className="addProduct-input"
-                        placeholder="Enter user email"
+                        placeholder="Enter Sub-Category of Toy"
                       />
                     </div>
                   </div>
@@ -148,16 +164,14 @@ const AddProduct = () => {
                 {/* photo url*/}
                 <div>
                   <div className="mt-4">
-                    <label className="addProduct-label  ">
-                      Photo Url
-                    </label>
-                    <div className="relative flex items-center">
+                    <label className="addProduct-label  ">Photo Url</label>
+                    <div>
                       <input
                         name="imageUrl"
-                        type="url"
+                        type="text"
                         required
                         className="addProduct-input"
-                        placeholder="Enter user email"
+                        placeholder="Enter photo url"
                       />
                     </div>
                   </div>
@@ -165,17 +179,15 @@ const AddProduct = () => {
                 {/* description*/}
                 <div>
                   <div className="mt-4">
-                    <label className="addProduct-label  ">
-                      Description
-                    </label>
-                    <div className="relative flex items-center">
+                    <label className="addProduct-label  ">Description</label>
+                    <div>
                       <textarea
                         name="description"
                         rows="5"
                         type="email"
                         required
                         className="addProduct-input"
-                        placeholder="Enter user email"
+                        placeholder="Write Description about Product"
                       ></textarea>
                     </div>
                   </div>

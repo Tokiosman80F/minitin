@@ -4,6 +4,7 @@ import Categories from "./Categories/Categories";
 import Gallery from "./Gallery/Gallery";
 import HotDeal from "./HotDeal/HotDeal";
 import Poster from "./Poster/Poster";
+import RecentProduct from "./RecentProduct/RecentProduct";
 
 const Home = () => {
   return (
@@ -14,8 +15,9 @@ const Home = () => {
         <Categories></Categories>
         <Title title="Hot Deal Limited Offer"></Title>
         <HotDeal></HotDeal>
-        <Title title="Our Recent Products"></Title>
         <Poster></Poster>
+        <Title title="Our Recent Products"></Title>
+        <RecentProduct></RecentProduct>
       </div>
       <Title title="Our Gallery"></Title>
       <Gallery></Gallery>

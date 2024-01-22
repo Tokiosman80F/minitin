@@ -5,32 +5,40 @@ import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
-import Swal from 'sweetalert2'
-
+import Swal from "sweetalert2";
+import avatar from "../../assets/images/avatar/avatar.svg";
+import {updateProfile} from 'firebase/auth'
 const SignUpForm = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const {signUpUser} = useContext(AuthContext);
+  const { signUpUser } = useContext(AuthContext);
 
   const handleSignup = (event) => {
     event.preventDefault();
     let form = event.target;
     let email = form.useremail.value;
     let password = form.password.value;
+    let username = form.username.value;
+    console.log("user name =", username);
     signUpUser(email, password)
-      .then((userCredential) => {
+      .then( async (userCredential) => {
         console.log("Sign-in successfull");
         const user = userCredential.user;
-        if(user.accessToken){
-          console.log("into user");
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Sign-Up Successful ",
-            showConfirmButton: false,
-            timer: 1500
-          });
-        }
+      
         console.log(user);
+        // inserting username and photo in firebase
+         await updateProfile(user,{
+          displayName:username,
+          photoURL:avatar
+        })
+      })
+      .then(() => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Sign-Up Successful ",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       })
       .catch((error) => {
         const errorMessage = error.message;

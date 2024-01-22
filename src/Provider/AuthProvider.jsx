@@ -15,6 +15,7 @@ const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  // const [userName,setUserName]=useState(null)
   // signup user
   const signUpUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -37,8 +38,8 @@ const AuthProvider = ({ children }) => {
   // observer
   useEffect(() => {
     const unsubscribe = () => {
-      onAuthStateChanged(auth, (cuurentUser) => {
-        setUser(cuurentUser);
+      onAuthStateChanged(auth, (currentUser) => {
+        setUser(currentUser);
       });
     };
     return () => {
