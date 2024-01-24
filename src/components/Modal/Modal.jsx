@@ -1,3 +1,4 @@
+import ReactDom   from "react-dom";
 import { useEffect } from "react";
 import "./style.css"
 const Modal = ({onClose,toy}) => {
@@ -8,8 +9,8 @@ const Modal = ({onClose,toy}) => {
     return ()=>{ document.body.style.overflowY='scroll'}
   },[])
  
-  return (
-    <div >
+  return ReactDom.createPortal(
+    <>
       <div className="modal-wrapper ">
       <div className="modal-container ">
         <div className="card lg:card-side bg-base-100 w-full">
@@ -36,7 +37,8 @@ const Modal = ({onClose,toy}) => {
         </div>
         </div>
     </div>
-    </div>
+    </>,
+    document.getElementById('myPortalModalDiv')
   );
 };
 
