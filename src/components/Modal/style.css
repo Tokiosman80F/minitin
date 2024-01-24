@@ -5,7 +5,7 @@
     left: 0;
     right: 0;
     /* background: rgba(0, 0, 0,.01); */
-    backdrop-filter: blur(1.5px);
+    backdrop-filter: blur(2px);
 }
 .modal-container{
     position: fixed;

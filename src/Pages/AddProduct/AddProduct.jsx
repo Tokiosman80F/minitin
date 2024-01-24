@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import minecraft from "../../assets/images/form/addProduct.png";
 import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 const AddProduct = () => {
   const { user } = useContext(AuthContext);
   // console.log("user from add product",user.displayName);
@@ -36,7 +37,15 @@ const AddProduct = () => {
       },
       body: JSON.stringify(newToyDetail),
     })
-      .then((res) => res.json())
+      .then((res) => res.json()).then(
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "You have add a new product",
+          showConfirmButton: false,
+          timer: 2500
+        })
+      )
       .then((result) => {
         console.log(result) 
         form.reset()
@@ -84,10 +93,11 @@ const AddProduct = () => {
                     <div>
                       <input
                         name="price"
-                        type="number"
+                        type="text"
                         required
                         className="addProduct-input"
                         placeholder="Price"
+                        
                       />
                     </div>
                   </div>
@@ -127,7 +137,7 @@ const AddProduct = () => {
                     <div className="">
                       <input
                         name="rating"
-                        type="number"
+                        type="text"
                         required
                         className="addProduct-input"
                         placeholder="Enter toy quality rating"

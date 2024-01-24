@@ -18,7 +18,7 @@ const RecentProduct = () => {
   return (
     <div className="bg-gray-100" style={{zIndex:"0"}}>
       <Tabs style={{zIndex:"0"}}>
-        <TabList>
+        <TabList style={{fontSize:"25px",color:"#0062BD",fontWeight:"700"}}>
           <Tab onClick={() => setCategory("car")}>Car</Tab>
           <Tab onClick={() => setCategory("lego")}>Lego</Tab>
           <Tab onClick={() => setCategory("superhero")}>Super hero</Tab>
@@ -26,7 +26,7 @@ const RecentProduct = () => {
         <TabPanel style={{zIndex:"0"}}>
           <div className="grid grid-cols-3 gap-4 items-center">
             {category === "car" &&
-              toySubCategory.slice(0, 2).map((item) => {
+              toySubCategory.slice(0, 4).map((item) => {
                 return (
                   <RecentProductCard
                   style={{zIndex:"0"}}
@@ -40,7 +40,7 @@ const RecentProduct = () => {
         <TabPanel>
           <div className="grid grid-cols-3 gap-4 items-center">
             {category === "lego" &&
-              toySubCategory.slice(0, 4).map((item) => {
+              toySubCategory.slice(0, 5).map((item) => {
                 return (
                   <RecentProductCard
                     key={item._id}
@@ -53,7 +53,7 @@ const RecentProduct = () => {
         <TabPanel>
           <div className="grid grid-cols-3 gap-4 items-center">
             {category === "superhero" &&
-              toySubCategory.slice(0, 4).map((item) => {
+              toySubCategory.slice(0, 6).map((item) => {
                 return (
                   <RecentProductCard
                     key={item._id}

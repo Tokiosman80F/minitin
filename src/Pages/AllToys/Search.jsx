@@ -30,7 +30,7 @@ const Search = ({setSearchText,handleSearch}) => {
           placeholder="Search With Toy Name"
           onFocus={handleFocus}
           onBlur={handleBlur}
-          required
+          
         />
       </div>
 

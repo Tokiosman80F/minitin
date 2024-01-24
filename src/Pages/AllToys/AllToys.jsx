@@ -8,19 +8,21 @@ const AllToys = () => {
   const [toysData, setToysData] = useState([]);
 
   const [openModal, setOpenModal] = useState(false);
-  const [selectedToy,setSelectedToy]=useState(null)
+  const [selectedToy, setSelectedToy] = useState(null);
 
   const toggleModal = (toy) => {
     setOpenModal(!openModal);
     console.log(openModal);
     console.log(toy);
-    setSelectedToy(toy)
+    setSelectedToy(toy);
   };
 
   const handleSearch = (event) => {
     event.preventDefault();
     console.log(searchText);
-    console.log("Search Btn is working");
+    fetch(`http://localhost:8000/toySearchByName/${searchText}`)
+      .then((response) => response.json())
+      .then((data) => setToysData(data));
   };
 
   useEffect(() => {
@@ -66,12 +68,17 @@ const AllToys = () => {
                 <td className="text-center">{toy.availableQuantity}</td>
                 <td>
                   <button
-                    onClick={()=>toggleModal(toy)}
+                    onClick={() => toggleModal(toy)}
                     className="rounded py-3 px-5 bg-blue-500 hover:bg-blue-400 text-white font-semibold"
                   >
                     View Detail <FaEye className="inline" />
                   </button>
-                   {openModal && selectedToy && <Modal toy={selectedToy} onClose={()=>setOpenModal(!openModal)}></Modal>}
+                  {openModal && selectedToy && (
+                    <Modal
+                      toy={selectedToy}
+                      onClose={() => setOpenModal(!openModal)}
+                    ></Modal>
+                  )}
                 </td>
               </tr>
             </tbody>
