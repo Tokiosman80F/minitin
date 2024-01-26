@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import FilterButton from "./FilterButton";
 import { AuthContext } from "../../Provider/AuthProvider";
 import MyToyCard from "./MyToyCard";
+import Swal from "sweetalert2";
 const MyToy = () => {
   const { user } = useContext(AuthContext);
   console.log(user);
@@ -16,7 +17,35 @@ const MyToy = () => {
         console.log(data);
         setMyToy(data);
       });
-  }, [user?.email]);
+  }, [user?.email, myToy]);
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Do you want to delete the Toy?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Yes",
+      denyButtonText: `No I don't`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Saved!", "", "success");
+      }
+      fetch(`http://localhost:8000/mytoy/${id}`, {
+        method: "DELETE",
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          if (data.deletedCount > 0) {
+            // Corrected typo in 'deletedCount'
+            const remaining = myToy.filter((item) => data.id !== item._id);
+            console.log("the remain", remaining);
+            setMyToy(remaining);
+          }
+        });
+    });
+  };
+
   return (
     <>
       {/* header part */}
@@ -40,7 +69,11 @@ const MyToy = () => {
         {/* card */}
         <div className="grid grid-cols-3 gap-10">
           {myToy.map((data) => (
-            <MyToyCard key={data._id} myData={data}></MyToyCard>
+            <MyToyCard
+              key={data._id}
+              handleDelete={handleDelete}
+              myData={data}
+            ></MyToyCard>
           ))}
         </div>
       </div>

@@ -5,7 +5,7 @@ import Copyright from "./Copyright";
 
 const Footer = () => {
   return (
-    <div>
+    <div className="mt-10">
       <FooterInfo></FooterInfo>
       <FooterContact></FooterContact>
       <Copyright></Copyright>
