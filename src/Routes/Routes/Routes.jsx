@@ -6,6 +6,7 @@ import SignInForm from "../../Pages/SignInForm/SignInForm";
 import SignUpForm from "../../Pages/SignUpForm/SignUpForm";
 import AddProduct from "../../Pages/AddProduct/AddProduct";
 import Blogs from "../../Pages/Blogs/Blogs";
+import MyToy from "../../Pages/MyToy/MyToy";
 
 export const router=createBrowserRouter([
     {
@@ -35,6 +36,10 @@ export const router=createBrowserRouter([
             {
                 path:"/blogs",
                 element:<Blogs></Blogs>
+            },
+            {
+                path:"/my-toy",
+                element:<MyToy/>
             }
         ]
     }
