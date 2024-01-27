@@ -10,11 +10,12 @@ const MyToy = () => {
   const [filter, setFilter] = useState("nothing");
   console.log(filter);
   const [myToy, setMyToy] = useState([]);
+
   useEffect(() => {
     fetch(`http://localhost:8000/mytoy/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log("the data",data);
+        console.log("the data", data);
         setMyToy(data);
       });
   }, [user?.email]);
@@ -46,6 +47,11 @@ const MyToy = () => {
     });
   };
 
+  
+  const handleUpdate = (id) => {
+    console.log(id);
+  };
+
   return (
     <>
       {/* header part */}
@@ -72,6 +78,7 @@ const MyToy = () => {
             <MyToyCard
               key={data._id}
               handleDelete={handleDelete}
+              handleUpdate={handleUpdate}
               myData={data}
             ></MyToyCard>
           ))}
