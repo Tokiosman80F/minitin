@@ -14,10 +14,10 @@ const MyToy = () => {
     fetch(`http://localhost:8000/mytoy/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        console.log("the data",data);
         setMyToy(data);
       });
-  }, [user?.email, myToy]);
+  }, [user?.email]);
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -38,7 +38,7 @@ const MyToy = () => {
           console.log(data);
           if (data.deletedCount > 0) {
             // Corrected typo in 'deletedCount'
-            const remaining = myToy.filter((item) => data.id !== item._id);
+            const remaining = myToy.filter((myToy) => myToy._id !== id);
             console.log("the remain", remaining);
             setMyToy(remaining);
           }

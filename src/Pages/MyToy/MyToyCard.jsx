@@ -8,9 +8,10 @@ const MyToyCard = ({ myData,handleDelete }) => {
         <h2 className="font-bold capitalize text-3xl text-blue-500 ">
           {myData.toyName}
         </h2>
-        <p>Sub category : {myData.subCategory}</p>
+        <p>Sub-Category : {myData.subCategory}</p>
         <p>Price: $ {myData.price}</p>
-        <p>Quantity:{myData.availableQuantity} </p>
+        <p>Quantity Avaiable:{myData.availableQuantity} </p>
+        <p>Describtion</p>
         <div className="card-actions justify-end text-white">
           <button className="bg-blue-400 hover:bg-blue-500 px-3 py-1 flex items-center justify-center font-semibold rounded-lg gap-2 ">
             Update <RxUpdate />
