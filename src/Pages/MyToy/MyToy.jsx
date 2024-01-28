@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import  { useContext, useEffect, useState } from "react";
 
 import FilterButton from "./FilterButton";
 import { AuthContext } from "../../Provider/AuthProvider";
@@ -6,11 +6,15 @@ import MyToyCard from "./MyToyCard";
 import Swal from "sweetalert2";
 const MyToy = () => {
   const { user } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
   const [filter, setFilter] = useState("nothing");
-  console.log(filter);
+  // console.log(filter);
   const [myToy, setMyToy] = useState([]);
-
+  // this one is for real time update in ui
+  const [control, setControl] = useState(false);
+  // for modal
+  const [openModal, setOpenModal] = useState(false);
+  
   useEffect(() => {
     fetch(`http://localhost:8000/mytoy/${user?.email}`)
       .then((res) => res.json())
@@ -18,7 +22,27 @@ const MyToy = () => {
         console.log("the data", data);
         setMyToy(data);
       });
-  }, [user?.email]);
+  }, [user?.email, control]);
+
+  const handleUpdate = (data) => {
+    setOpenModal(!openModal);
+
+    console.log("the handle Update data ", data);
+    fetch(`http://localhost:8000/mytoy-edit/${data._id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          setControl(!control);
+        }
+      });
+  };
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -45,11 +69,6 @@ const MyToy = () => {
           }
         });
     });
-  };
-
-  
-  const handleUpdate = (id) => {
-    console.log(id);
   };
 
   return (
@@ -80,6 +99,9 @@ const MyToy = () => {
               handleDelete={handleDelete}
               handleUpdate={handleUpdate}
               myData={data}
+              openModal={openModal}
+              setOpenModal={setOpenModal}
+              
             ></MyToyCard>
           ))}
         </div>
