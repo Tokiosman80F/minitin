@@ -37,7 +37,6 @@ const Navbar = () => {
         <Link to="/my-toy">My Toys</Link>
         <Link to="/addproduct">Add Toy</Link>
         <Link to="/blogs">Blogs</Link>
-        <Link to=""></Link>
       </div>
       {/* user & login */}
       <div className="flex justify-between items-center gap-2">

@@ -5,17 +5,37 @@ import "./style.css";
 import { FcLike } from "react-icons/fc";
 import { FaRegHeart } from "react-icons/fa";
 import Modal from "../../../components/Modal/Modal";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../../Provider/AuthProvider";
+import Swal from "sweetalert2";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const RecentProductCard = ({ toyInfo }) => {
+  const { user } = useContext(AuthContext);
   const [openModal, setOpenModal] = useState(false);
   const [selectedToy, setSelectedToy] = useState(null);
   const [likeProduct, setLikeProduct] = useState(false);
+  const navigate = useNavigate();
   const toggleModal = (toy) => {
-    setOpenModal(!openModal);
-    console.log(openModal);
-    console.log(toy);
-    setSelectedToy(toy);
+    if (user?.email) {
+      setOpenModal(!openModal);
+      console.log(openModal);
+      console.log(toy);
+      setSelectedToy(toy);
+    } else {
+      Swal.fire({
+        title: "To view detail u have to login first",
+        showCancelButton: true,
+        confirmButtonText: "Take Me To Login page",
+      
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/signup");
+        } else if (result.isDenied) {
+          return
+        }
+      });
+    }
   };
 
   const customStyles = {
@@ -28,7 +48,10 @@ const RecentProductCard = ({ toyInfo }) => {
     <div>
       <div className="card w-full rounded-none bg-base-100 shadow-2xl ">
         <figure className="h-56">
-          <img src={toyInfo.imageUrl} className="h-full w-full object-cover hover:scale-110 transition duration-500 " />
+          <img
+            src={toyInfo.imageUrl}
+            className="h-full w-full object-cover hover:scale-110 transition duration-500 "
+          />
         </figure>
         <div className="card-body">
           <div className="flex">
@@ -55,11 +78,14 @@ const RecentProductCard = ({ toyInfo }) => {
             </span>
           </div>
           <div className="card-actions justify-end items-center gap-5">
-            <div onClick={()=>setLikeProduct(!likeProduct)} className="cursor-pointer " >
+            <div
+              onClick={() => setLikeProduct(!likeProduct)}
+              className="cursor-pointer "
+            >
               {likeProduct ? (
-                <FcLike className="text-xl  "  />
+                <FcLike className="text-xl  " />
               ) : (
-                <FaRegHeart className="text-xl text-gray-400 "  />
+                <FaRegHeart className="text-xl text-gray-400 " />
               )}
             </div>
             <div

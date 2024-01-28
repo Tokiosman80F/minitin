@@ -1,20 +1,42 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Search from "./Search";
 import { FaEye } from "react-icons/fa";
 import Modal from "../../components/Modal/Modal";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const AllToys = () => {
+  const {user}=useContext(AuthContext)
   const [searchText, setSearchText] = useState("");
   const [toysData, setToysData] = useState([]);
 
   const [openModal, setOpenModal] = useState(false);
   const [selectedToy, setSelectedToy] = useState(null);
 
+  const navigate=useNavigate()
+
   const toggleModal = (toy) => {
+  if(user?.email){
     setOpenModal(!openModal);
     console.log(openModal);
     console.log(toy);
     setSelectedToy(toy);
+  }
+  else{
+    Swal.fire({
+      title: "To view detail u have to login first",
+      showCancelButton: true,
+      confirmButtonText: "Take Me To Login page",
+    
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate("/signup");
+      } else if (result.isDenied) {
+        return
+      }
+    });
+  }
   };
 
   const handleSearch = (event) => {
