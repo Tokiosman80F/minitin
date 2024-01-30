@@ -8,7 +8,7 @@ const RecentProduct = () => {
   const [category, setCategory] = useState("car");
   useEffect(() => {
     console.log(category);
-    fetch(`http://localhost:8000/all-toys/${category}`)
+    fetch(`https://minitin-server.vercel.app/all-toys/${category}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

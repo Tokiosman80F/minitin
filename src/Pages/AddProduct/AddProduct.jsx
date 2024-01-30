@@ -32,7 +32,7 @@ const AddProduct = () => {
     console.log(newToyDetail);
 
 
-    fetch("http://localhost:8000/add-toy", {
+    fetch("https://minitin-server.vercel.app/add-toy", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

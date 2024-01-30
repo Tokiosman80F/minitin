@@ -42,13 +42,18 @@ const AllToys = () => {
   const handleSearch = (event) => {
     event.preventDefault();
     console.log(searchText);
-    fetch(`http://localhost:8000/toySearchByName/${searchText}`)
+    fetch(`https://minitin-server.vercel.app/toySearchByName/${searchText}`)
       .then((response) => response.json())
       .then((data) => setToysData(data));
   };
 
   useEffect(() => {
-    fetch(`http://localhost:8000/all-toys`)
+    fetch(`https://minitin-server.vercel.app/all-toys`,{
+      method:"GET",
+      headers:{
+        'Accept':'application/json'
+      }
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
