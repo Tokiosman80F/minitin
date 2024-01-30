@@ -27,14 +27,14 @@ const MyToyModal = ({ data,onClose,handleUpdate }) => {
     <>
       <div className="modal-wrapper">
         <div className="modal-container">
-          <div className="bg-white text-black border-2  my-4 rounded-xl sm:px-6 px-4 py-8 max-w-2xl w-full h-max  max-lg:mx-auto z-10">
-            <div className="mb-10 flex justify-between">
-              <h3 className="text-3xl font-extrabold">Update Your Product</h3>
+          <div className="bg-white text-black border-2  my-4 rounded-xl px-4 py-8 max-w-2xl w-full h-max  max-lg:mx-auto z-10">
+            <div className="mb-10 flex md:justify-between">
+              <h3 className="md:text-3xl font-extrabold">Update Your Product</h3>
               <button
                 onClick={onClose}
                 className="bg-red-500 text-white p-1 rounded-lg font-bold"
               >
-                X Close
+                 Close
               </button>
             </div>
             <form onSubmit={handleUpdateForm}>
@@ -56,7 +56,7 @@ const MyToyModal = ({ data,onClose,handleUpdate }) => {
               </div>
 
               {/*  available quantity & price */}
-              <div className=" flex justify-between gap-4">
+              <div className=" flex flex-col md:flex-row justify-between gap-4">
                 {/* quantity */}
                 <div className="">
                   <label className="addProduct-label  ">Quantity</label>

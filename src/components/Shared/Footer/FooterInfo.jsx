@@ -7,7 +7,7 @@ import {
 const FooterInfo = () => {
   return (
     <footer className=" bg-[#EBEEFB] py-20">
-      <div className="footer  max-width-container justify-between">
+      <div className="footer  max-width-container justify-between px-2">
         <nav>
           <header className=" font-bold text-xl capitalize text-gray-800  ">
             Buyer Center

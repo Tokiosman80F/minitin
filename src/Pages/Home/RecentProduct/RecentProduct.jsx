@@ -24,7 +24,7 @@ const RecentProduct = () => {
           <Tab onClick={() => setCategory("superhero")}>Super hero</Tab>
         </TabList>
         <TabPanel style={{zIndex:"0"}}>
-          <div className="grid grid-cols-3 gap-4 items-center">
+          <div className="grid md:grid-cols-3 gap-4 items-center">
             {category === "car" &&
               toySubCategory.slice(0, 4).map((item) => {
                 return (
@@ -38,7 +38,7 @@ const RecentProduct = () => {
           </div>
         </TabPanel>
         <TabPanel>
-          <div className="grid grid-cols-3 gap-4 items-center">
+          <div className="grid md:grid-cols-3 gap-4 items-center">
             {category === "lego" &&
               toySubCategory.slice(0, 5).map((item) => {
                 return (
@@ -51,7 +51,7 @@ const RecentProduct = () => {
           </div>
         </TabPanel>
         <TabPanel>
-          <div className="grid grid-cols-3 gap-4 items-center">
+          <div className="grid md:grid-cols-3 gap-4 items-center">
             {category === "superhero" &&
               toySubCategory.slice(0, 6).map((item) => {
                 return (

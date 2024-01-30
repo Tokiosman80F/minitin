@@ -4,6 +4,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 const AddProduct = () => {
   const { user } = useContext(AuthContext);
+
   // console.log("user from add product",user.displayName);
   const onhandleAddtoy = (event) => {
     event.preventDefault();
@@ -29,6 +30,7 @@ const AddProduct = () => {
       description,
     };
     console.log(newToyDetail);
+
 
     fetch("http://localhost:8000/add-toy", {
       method: "POST",

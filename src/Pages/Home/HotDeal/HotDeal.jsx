@@ -11,7 +11,7 @@ const HotDeal = () => {
   ];
 
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex flex-col md:flex-row gap-2  justify-between items-center">
       {dealCardInfo.map((info, index) => (
         <DealCard key={index} info={info}></DealCard>
       ))}

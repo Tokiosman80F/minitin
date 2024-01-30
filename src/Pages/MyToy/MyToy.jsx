@@ -92,7 +92,7 @@ const MyToy = () => {
           <FilterButton setFilter={setFilter} />
         </div>
         {/* card */}
-        <div className="grid grid-cols-3 gap-10">
+        <div className="grid md:grid-cols-3  items-center justify-center gap-10">
           {myToy.map((data) => (
             <MyToyCard
               key={data._id}
