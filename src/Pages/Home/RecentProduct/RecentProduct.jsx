@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import RecentProductCard from "./RecentProductCard";
 import "react-tabs/style/react-tabs.css";
@@ -8,7 +8,7 @@ const RecentProduct = () => {
   const [category, setCategory] = useState("car");
   useEffect(() => {
     console.log(category);
-    fetch(`https://minitin-server.vercel.app/all-toys/${category}`)
+    fetch(`https://minitin-server-sint-h0pki7li2-tokiosman0135gmailcoms-projects.vercel.appall-toys/${category}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

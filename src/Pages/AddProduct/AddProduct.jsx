@@ -32,7 +32,7 @@ const AddProduct = () => {
     console.log(newToyDetail);
 
 
-    fetch("https://minitin-server.vercel.app/add-toy", {
+    fetch("https://minitin-server-sint-h0pki7li2-tokiosman0135gmailcoms-projects.vercel.appadd-toy", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

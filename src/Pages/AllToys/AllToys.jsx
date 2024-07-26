@@ -42,13 +42,13 @@ const AllToys = () => {
   const handleSearch = (event) => {
     event.preventDefault();
     console.log(searchText);
-    fetch(`https://minitin-server.vercel.app/toySearchByName/${searchText}`)
+    fetch(`https://minitin-server-sint-h0pki7li2-tokiosman0135gmailcoms-projects.vercel.apptoySearchByName/${searchText}`)
       .then((response) => response.json())
       .then((data) => setToysData(data));
   };
 
   useEffect(() => {
-    fetch(`https://minitin-server.vercel.app/all-toys`,{
+    fetch(`https://minitin-server-sint-h0pki7li2-tokiosman0135gmailcoms-projects.vercel.appall-toys`,{
       method:"GET",
       headers:{
         'Accept':'application/json'

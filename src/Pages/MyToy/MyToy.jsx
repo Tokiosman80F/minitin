@@ -16,7 +16,7 @@ const MyToy = () => {
   const [openModal, setOpenModal] = useState(false);
   
   useEffect(() => {
-    fetch(`https://minitin-server.vercel.app/mytoy/${user?.email}`)
+    fetch(`https://minitin-server-sint-h0pki7li2-tokiosman0135gmailcoms-projects.vercel.appmytoy/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         console.log("the data", data);
@@ -28,7 +28,7 @@ const MyToy = () => {
     setOpenModal(!openModal);
 
     console.log("the handle Update data ", data);
-    fetch(`https://minitin-server.vercel.app/mytoy-edit/${data._id}`, {
+    fetch(`https://minitin-server-sint-h0pki7li2-tokiosman0135gmailcoms-projects.vercel.appmytoy-edit/${data._id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -55,7 +55,7 @@ const MyToy = () => {
       if (result.isConfirmed) {
         Swal.fire("Saved!", "", "success");
       }
-      fetch(`https://minitin-server.vercel.app/mytoy/${id}`, {
+      fetch(`https://minitin-server-sint-h0pki7li2-tokiosman0135gmailcoms-projects.vercel.appmytoy/${id}`, {
         method: "DELETE",
       })
         .then((response) => response.json())
